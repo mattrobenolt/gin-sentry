@@ -3,10 +3,11 @@ package recovery
 import (
 	"errors"
 	"fmt"
-	"github.com/getsentry/raven-go"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"runtime/debug"
+
+	"github.com/getsentry/raven-go"
+	"github.com/gin-gonic/gin"
 )
 
 func Recovery(client *raven.Client, onlyCrashes bool) gin.HandlerFunc {
