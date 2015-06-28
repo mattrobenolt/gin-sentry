@@ -10,7 +10,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Recovery(client *raven.Client, onlyCrashes bool) gin.HandlerFunc {
+func Recovery(onlyCrashes bool) gin.HandlerFunc {
+	return RecoveryWithClient(raven.DefaultClient, onlyCrashes)
+}
+
+func RecoveryWithClient(client *raven.Client, onlyCrashes bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		defer func() {
 			if rval := recover(); rval != nil {
